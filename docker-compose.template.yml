@@ -9,10 +9,10 @@ services:
       - {cfg.public}:/public
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nginx.rule=Host(`{cfg.nginx.domain}`)
-      #{!cfg.tls}- traefik.http.routers.nginx.entrypoints=web
-      #{cfg.tls}- traefik.http.routers.nginx.entrypoints=webSecure
-      #{cfg.tls}- traefik.http.routers.nginx.tls.certresolver=letsEncrypt
+      - traefik.http.routers.nifi-tickets-scanner-nginx.rule=Host(`{cfg.nginx.domain}`)
+      #{!cfg.tls}- traefik.http.routers.nifi-tickets-scanner-nginx.entrypoints=web
+      #{cfg.tls}- traefik.http.routers.nifi-tickets-scanner-nginx.entrypoints=webSecure
+      #{cfg.tls}- traefik.http.routers.nifi-tickets-scanner-nginx.tls.certresolver=letsEncrypt
     networks:
       - traefik
 networks:
