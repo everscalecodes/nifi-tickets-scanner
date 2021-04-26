@@ -3,6 +3,10 @@ import 'pt-root-ui-font/regular.css'
 import './styles.css'
 import jsQR, {QRCode} from 'jsqr'
 import {Point} from 'jsqr/dist/locator'
+import TicketRootContract from "./contracts/TicketRootContract";
+import Ton from "./contracts/utils/Ton";
+import config from "./config/config";
+import TicketTokenContract from "./contracts/TicketTokenContract";
 
 ///////////////
 // CONSTANTS //
@@ -23,6 +27,12 @@ const canvasElement: HTMLCanvasElement = <HTMLCanvasElement> document.getElement
 const canvasContext: CanvasRenderingContext2D = canvasElement.getContext('2d')
 const noteElement: HTMLElement = document.getElementById('note')
 const buttonElement: HTMLElement = document.getElementById('button')
+
+///////////////
+// CONTRACTS //
+///////////////
+Ton.url = config.net
+const ticketRootContract: TicketRootContract = new TicketRootContract()
 
 window.onload = _ => {
     _startScan()
@@ -98,12 +108,22 @@ function _tick(): void {
 
             const qrData: QRData = readQRData(code)
             if (!qrData.valid)
-                _showNote('red', 'Invalid code', 'Ok')
-            else
-                _showNote('green', 'Ticket', 'Ok')
+                _showInvalidNote()
+            else {
+                _checkQRData(qrData).then((result: boolean) => {
+                    if (result)
+                        _showNote('green', `Ticket: #${qrData.id}`, 'Ok')
+                    else
+                        _showInvalidNote()
+                }).catch(_ => _showInvalidNote())
+            }
         }
     }
     requestAnimationFrame(_tick)
+}
+
+function _showInvalidNote(): void {
+    _showNote('red', 'Invalid code', 'Ok')
 }
 
 function _showNote(className: string, noteText: string, buttonText: string): void {
@@ -121,6 +141,15 @@ function _showNote(className: string, noteText: string, buttonText: string): voi
 
     noteElement.innerHTML = noteText
     buttonElement.innerHTML = buttonText
+}
+
+async function _checkQRData(qrData: QRData): Promise<boolean> {
+    const hashFromSecret: string = await ticketRootContract.getHash(qrData.secret)
+    const tokenAddress: string = await ticketRootContract.getTokenAddress(qrData.id)
+    const ticketTokenContract: TicketTokenContract = new TicketTokenContract(tokenAddress)
+    const tokenHash: string = await ticketTokenContract.getHash()
+    return tokenHash === hashFromSecret
+    return true
 }
 
 interface QRData {
