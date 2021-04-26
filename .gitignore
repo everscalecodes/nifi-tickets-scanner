@@ -1,0 +1,9 @@
+# Logs
+log/
+
+# Templates
+docker-compose.yml
+config/nginx/nginx.conf
+
+# Installation
+config.json

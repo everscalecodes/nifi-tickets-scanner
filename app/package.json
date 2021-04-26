@@ -1,0 +1,24 @@
+{
+  "name": "nifi-tickets-scanner",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Kok Kek",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@tonclient/core": "^1.6.1",
+    "@tonclient/lib-web": "^1.6.1",
+    "freeton": "^0.5.1",
+    "pt-root-ui-font": "kokkekpek/pt-root-ui-font"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^7.0.0",
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.20.1",
+    "webpack-cli": "^4.5.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "directories": {
+    "nginx.log": {
+      "path": "./log/nginx/nifi/tickets-scanner",
+      "permissions": 755
+    },
+    "public": {
+      "path": "./app/public",
+      "permissions": 755
+    }
+  },
+  "values": {
+    "nginx.domain": "xxx.xxx",
+    "nginx.workers": 1,
+    "nginx.workersConnections": 1024,
+    "tls": false
+  }
+}
