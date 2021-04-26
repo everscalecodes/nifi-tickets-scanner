@@ -1,0 +1,83 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: PTRootUIWebRegular, sans-serif;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    background: #088;
+}
+
+#note {
+    position: absolute;
+    width: calc(100% - 32px);
+    max-width: 600px;
+    height: 48px;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    background: #FFFD;
+    margin: 0 auto;
+    border-radius: 4px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 48px;
+    color: #000;
+}
+
+#note.red {
+    color: #800;
+}
+
+#note.green {
+    color: #080;
+}
+
+#note.blue {
+    color: #088;
+}
+
+#button {
+    background: #000;
+    position: absolute;
+    height: 48px;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    margin: 0 auto;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 32px;
+    padding: 0 2em;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+#button:hover {
+    filter: brightness(1.1);
+}
+
+#button:active {
+    filter: brightness(1.2);
+}
+
+#button.red {
+    background: #800;
+}
+
+#button.green {
+    background: #080;
+}
+
+#button.blue {
+    background: #088;
+}

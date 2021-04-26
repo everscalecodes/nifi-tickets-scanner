@@ -9,6 +9,7 @@
     "@tonclient/core": "^1.6.1",
     "@tonclient/lib-web": "^1.6.1",
     "freeton": "^0.5.1",
+    "jsqr": "^1.4.0",
     "pt-root-ui-font": "kokkekpek/pt-root-ui-font"
   },
   "devDependencies": {

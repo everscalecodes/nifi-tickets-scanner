@@ -33,7 +33,8 @@ module.exports = {
                 options: {
                     allowTsInNodeModules: true
                 }
-            }, {
+            },
+            {
                 test: /\.(gif|png|jpeg|jpg|svg|woff2)$/i,
                 use: [{
                     loader: 'url-loader',
@@ -41,8 +42,7 @@ module.exports = {
                         limit: 500000, // Convert images < 500kb to base64 strings
                         name: 'images/[hash]-[name].[ext]'
                     }
-                },
-                ],
+                }],
             }
         ]
     },
