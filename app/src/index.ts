@@ -3,10 +3,10 @@ import 'pt-root-ui-font/regular.css'
 import './styles.css'
 import jsQR, {QRCode} from 'jsqr'
 import {Point} from 'jsqr/dist/locator'
-import TicketRootContract from "./contracts/TicketRootContract";
-import Ton from "./contracts/utils/Ton";
-import config from "./config/config";
-import TicketTokenContract from "./contracts/TicketTokenContract";
+import TicketRootContract from './contracts/TicketRootContract'
+import Ton from './contracts/utils/Ton'
+import config from './config/config'
+import TicketTokenContract from './contracts/TicketTokenContract'
 
 ///////////////
 // CONSTANTS //
